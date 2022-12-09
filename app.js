@@ -16,7 +16,7 @@ app.use(express.static(__dirname + `/public`));
 
 //= connect to the mongodb database
 //= if db doesn't exist then it will be created
-mongoose.connect(`mongodb+srv://admin-user:test123@cluster0.zbzbtw8.mongodb.net/todolistdb?ssl=true&authSource=admin&w=majority`);
+mongoose.connect(`mongodb+srv://<your-username>:<your-password>@cluster0.zbzbtw8.mongodb.net/todolistdb?ssl=true&authSource=admin&w=majority`);
 
 //= create new mongoose schema
 const itemSchema = {
@@ -52,8 +52,8 @@ const listSchema = {
 
 const List = mongoose.model("List", listSchema);
 
-//= render list.ejs when user goes to /apps/todolistdb
-app.get(`/apps/todolistdb`, function (req, res) {
+//= render list.ejs when user goes to /
+app.get(`/`, function (req, res) {
   const day = date.getDate();
   Item.find({}, function (err, foundItems) {
     //! the following is only for if we have an empty list and we
@@ -73,7 +73,7 @@ app.get(`/apps/todolistdb`, function (req, res) {
 });
 
 //= if the user decides to create a new list
-app.get(`/apps/todolistdb/:page`, function (req, res) {
+app.get(`/:page`, function (req, res) {
   const customListName = req.params.page;
 
   List.findOne({ name: customListName }, function (err, foundList) {
@@ -85,7 +85,7 @@ app.get(`/apps/todolistdb/:page`, function (req, res) {
           items: defaultItems
         });
         list.save()
-        res.redirect(`/apps/todolistdb/${customListName}`)
+        res.redirect(`/${customListName}`)
       } else {
         //= show existing list
         res.render(`list`, { listTitle: foundList.name, items: foundList.items })
@@ -95,7 +95,7 @@ app.get(`/apps/todolistdb/:page`, function (req, res) {
 })
 
 //= when the user posts a new list item
-app.post(`/apps/todolistdb`, function (req, res) {
+app.post(`/`, function (req, res) {
   const day = date.getDate();
   const itemName = req.body.newItem; //# get value from input in list.ejs
   const listName = req.body.list;
@@ -106,19 +106,19 @@ app.post(`/apps/todolistdb`, function (req, res) {
 
   if (listName === day) {
     item.save();
-    res.redirect(`/apps/todolistdb`); //# when the user clicks the add button it will go to the home route
+    res.redirect(`/`); //# when the user clicks the add button it will go to the home route
   } else {
     List.findOne({ name: listName }, function (err, foundList) {
       foundList.items.push(item);
       foundList.save();
-      res.redirect(`/apps/todolistdb/${listName}`);
+      res.redirect(`/${listName}`);
     })
   }
 
 });
 
 //= when the user decides to delete an item
-app.post(`/apps/todolistdb/delete`, function (req, res) {
+app.post(`/delete`, function (req, res) {
 
   const day = date.getDate();
   const checkedID = req.body.checkbox;
@@ -128,13 +128,13 @@ app.post(`/apps/todolistdb/delete`, function (req, res) {
     Item.findByIdAndRemove(checkedID, function (err) {
       if (!err) {
         //\ console.log(`item deleted`);
-        res.redirect(`/apps/todolistdb`);
+        res.redirect(`/`);
       }
     });
   } else {
     List.findOneAndUpdate({ name: listName }, { $pull: { items: { _id: checkedID } } }, function (err, foundList) {
       if (!err) {
-        res.redirect(`/apps/todolistdb/${listName}`);
+        res.redirect(`/${listName}`);
       }
     });
   }
