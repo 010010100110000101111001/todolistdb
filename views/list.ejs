@@ -1,0 +1,36 @@
+<%- include("partials/header") -%>
+
+<div class="main-content">
+  <div class="main-text">
+
+    <div class="form-box">
+
+      <h5 class="listTitle"><%= listTitle %></h5>
+
+      <form class="form" action="/" method="post">
+        <div class="add-item-box" style="display: flex;">
+          <input type="text" name="newItem" class="form-control" placeholder="item" required autofocus autocomplete="off">
+          <div class="spacer"></div>
+          <button class="btn btn-primary" type="submit" name="list" value="<%= listTitle %>">
+            <i class="fa-solid fa-plus fa-fade" style="--fa-animation-duration: 2s;"></i>
+          </button>
+        </div>
+      </form>
+
+      <% items.forEach(function(item){ %>
+      <form action="/delete" method="post">
+        <div class="item">
+          <input type="checkbox" class="checkbox" name="checkbox" value="<%= item._id %>" onchange="this.form.submit()">
+          <div class="spacer"></div>
+          <div><%= item.name %></div>
+        </div>
+        <input type="hidden" name="listName" value="<%= listTitle %>">
+      </form>
+      <% }) %>
+    </div>
+
+  </div>
+
+</div>
+
+<%- include("partials/footer") -%>

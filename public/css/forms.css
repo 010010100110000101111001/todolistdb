@@ -1,0 +1,122 @@
+.date {
+  padding: 15px;
+  text-align: center;
+}
+
+.item-input {
+  text-align: center;
+}
+
+.add-item-box {
+  padding: 5px 5px 10px;
+}
+
+.form-box {
+  max-width: 400px;
+  background-color: #EAECEE;
+  margin: 10px auto;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+.form-signup {
+  text-align: center;
+  width: 100%;
+  max-width: 250px;
+  padding: 15px;
+  margin: auto;
+  font-weight: 400;
+}
+
+.form-contact {
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  padding: 15px;
+  margin: auto;
+  font-weight: 400;
+}
+
+top.caret-block {
+  background-color: #000;
+  color: #FFF;
+}
+
+.top, .middle, .bottom {
+  /* color: white; */ /*Means both the text and caret will be white */
+  background-color: white;
+  text-shadow: 0 0 2px #888;
+  /* caret-shape: block;  */ /* NOT SUPPORTED BY BROWSERS YET */
+}
+
+.top {
+  /* margin-bottom: -1px; */
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.middle {
+  border-radius: 0;
+  /* margin-bottom: -1px; */
+}
+
+.bottom {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.top:focus,
+.middle:focus,
+.bottom:focus {
+  animation: PulseAttention 1.5s cubic-bezier(.215, .61, .355, 1) forwards infinite;
+  box-shadow: none;
+  /* caret-shape: block; */ /* NOT SUPPORTED BY BROWSERS YET */
+}
+
+@keyframes PulseAttention {
+  50% {
+    border-color: #413f3f;
+  }
+}
+
+.item {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #D5D8DC;
+}
+
+.spacer {
+  margin: 0 5px 0 5px;
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+input[type="checkbox"] {
+  margin-left: 10px;
+}
+
+.list-item-checked {
+  text-decoration: line-through;
+}
+
+.listTitle {
+  text-align: center;
+  padding: 5px;
+}
+
+.blog-form-container {
+  text-align: center;
+  width: 80%;
+}
+
+.blog-form-group {
+  padding: 5px;
+}
+
+.blog-form-center {
+  margin-left: 15%;
+}

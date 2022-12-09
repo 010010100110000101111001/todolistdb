@@ -1,0 +1,62 @@
+/**************** HTML SELECTORS ****************/
+body {
+  background-color: #FFF;
+  font-family: 'Silkscreen', cursive;
+  font-size: 12px;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: #34495E;
+}
+
+li {
+  font-size: 12px;
+}
+
+h1,
+h2 {
+  color: #FFF;
+  text-shadow: 5px 5px 10px black;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.main {
+  position: relative;
+  width: 85%;
+  margin: 0 auto;
+  border-radius: 20px;
+  opacity: 0.85;
+}
+
+.main-content {
+  position: relative;
+  background-color: #FDFEFE;
+  margin: 20px;
+  padding: 15px;
+}
+
+.main-text {
+  text-align: justify;
+  padding: 10px;
+}
+
+.main-header,
+.foot-container {
+  margin: 0;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.center {
+  text-align: center;
+}
