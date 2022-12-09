@@ -16,7 +16,8 @@ app.use(express.static(__dirname + `/public`));
 
 //= connect to the mongodb database
 //= if db doesn't exist then it will be created
-mongoose.connect(`mongodb+srv://<your-username>:<your-password>@cluster0.zbzbtw8.mongodb.net/todolistdb?ssl=true&authSource=admin&w=majority`);
+mongoose.connect(`mongodb+srv://<your-username>:<your-password>@cluster0.zbzbtw8.mongodb.net/<your-database-name>?ssl=true&authSource=admin&w=majority`);
+// I think you may need to change the bit after @cluster to match whatever cluster you're using
 
 //= create new mongoose schema
 const itemSchema = {
